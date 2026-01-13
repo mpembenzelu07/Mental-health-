@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindHarmony | Culturally-Appropriate Mental Health</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            color: #4a6fa5;
+            font-size: 28px;
+        }
+        
+        .logo h1 {
+            color: #2d4059;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #4a6fa5;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2d4059;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #4a6fa5;
+            background-color: #f0f5ff;
+        }
+        
+        .active {
+            color: #4a6fa5;
+            background-color: #f0f5ff;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #2d4059;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-content h2 {
+            font-size: 48px;
+            color: #2d4059;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content h2 span {
+            color: #4a6fa5;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4a6fa5;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #4a6fa5;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #4a6fa5;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2d4059;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #4a6fa5;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: #2d4059;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        /* Cultural Section */
+        .cultural {
+            padding: 80px 0;
+            background-color: #f0f5ff;
+        }
+        
+        .cultural-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .cultural-text {
+            flex: 1;
+        }
+        
+        .cultural-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cultural-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .cultural-text h2 {
+            font-size: 36px;
+            color: #2d4059;
+            margin-bottom: 20px;
+        }
+        
+        .cultural-text p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        /* Why Last Section */
+        .why-last {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+        
+        .why-last-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .why-last-text {
+            flex: 1;
+        }
+        
+        .why-last-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .infrastructure-chart {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .chart-bar {
+            margin-bottom: 20px;
+        }
+        
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .bar {
+            height: 30px;
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            border-radius: 15px;
+            background-color: #4a6fa5;
+            width: 0;
+            animation: fillBar 1s forwards;
+        }
+        
+        @keyframes fillBar {
+            to {
+                width: var(--width);
+            }
+        }
+        
+        .mental-health-bar .bar-fill {
+            background-color: #ff6b6b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2d4059;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #f0f5ff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4a6fa5;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #405b7d;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .cultural-content, .why-last-content {
+                flex-direction: column;
+            }
+            
+            .hero-content h2 {
+                font-size: 38px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero-content h2 {
+                font-size: 32px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>Mind<span>Harmony</span></h1>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="contact.html" class="btn">Get Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Culturally-Appropriate <span>Mental Health</span> Platform</h2>
+            <p>Building mental well-being as the invisible foundation for strong communities after establishing physical infrastructure in education, business, legal, safety, and environment.</p>
+            <a href="services.html" class="btn">Explore Our Approach</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Holistic Approach</h2>
+                <p>We address mental health within the context of cultural values, beliefs, and community structures.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Culturally-Sensitive Therapies</h3>
+                    <p>Mental health approaches that respect cultural traditions, values, and communication styles.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Community-Based Support</h3>
+                    <p>Leveraging existing community structures and trusted relationships for mental health support.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Multilingual Resources</h3>
+                    <p>Mental health materials and services available in multiple languages and cultural contexts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Section -->
+    <section class="cultural">
+        <div class="container">
+            <div class="cultural-content">
+                <div class="cultural-text">
+                    <h2>Why Culture Matters in Mental Health</h2>
+                    <p>Mental health cannot be separated from cultural context. What constitutes "well-being" varies across cultures, as do expressions of distress and pathways to healing.</p>
+                    <p>Our platform integrates traditional healing practices with evidence-based psychology to create approaches that feel familiar, respectful, and effective for each community.</p>
+                    <p>We work with cultural brokers, community elders, and local practitioners to ensure our services are appropriate and accessible.</p>
+                    <a href="about.html" class="btn">Learn About Our Model</a>
+                </div>
+                <div class="cultural-image">
+                    <img src="https://images.unsplash.com/photo-1540569876033-6e5d046a1d77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Diverse group of people in conversation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Last Section -->
+    <section class="why-last">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Mental Health Comes Last in Community Development</h2>
+                <p>After building physical infrastructure, we address the invisible foundation of everything else</p>
+            </div>
+            
+            <div class="why-last-content">
+                <div class="why-last-text">
+                    <p>Traditional community development prioritizes visible infrastructure: schools, businesses, legal systems, safety, and environment. These create the tangible framework for society.</p>
+                    <p>However, without addressing mental health—the invisible foundation—these structures cannot reach their full potential. Mental well-being enables people to:</p>
+                    <ul style="margin: 20px 0 20px 30px; color: #555;">
+                        <li>Fully engage in educational opportunities</li>
+                        <li>Participate in economic activities</li>
+                        <li>Access and trust legal systems</li>
+                        <li>Contribute to community safety</li>
+                        <li>Care for their environment</li>
+                    </ul>
+                    <p>By addressing mental health last, we ensure it's built upon stable infrastructure while recognizing it as the bedrock that supports all other community systems.</p>
+                </div>
+                
+                <div class="why-last-visual">
+                    <div class="infrastructure-chart">
+                        <div class="chart-bar">
+                            <div class="bar-label">
+                                <span>Education</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="bar">
+                                <div class="bar-fill" style="--width: 100%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-bar">
+                            <div class="bar-label">
+                                <span>Business & Economy</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="bar">
+                                <div class="bar-fill" style="--width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-bar">
+                            <div class="bar-label">
+                                <span>Legal Systems</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="bar">
+                                <div class="bar-fill" style="--width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-bar">
+                            <div class="bar-label">
+                                <span>Safety & Security</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="bar">
+                                <div class="bar-fill" style="--width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-bar">
+                            <div class="bar-label">
+                                <span>Environment</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="bar">
+                                <div class="bar-fill" style="--width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-bar mental-health-bar">
+                            <div class="bar-label">
+                                <span>Mental Well-Being</span>
+                                <span>Foundation</span>
+                            </div>
+                            <div class="bar">
+                                <div class="bar-fill" style="--width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindHarmony</h3>
+                    <p>Culturally-appropriate mental health platform addressing the invisible foundation of community well-being.</p>
+                    <p style="margin-top: 15px;"><i class="fas fa-heart" style="color: #ff6b6b; margin-right: 8px;"></i> Building mental wellness for all communities</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Our Approach</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Cultural Resources</a></li>
+                        <li><a href="community.html">Community Forum</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> support@mindharmony.org</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (800) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Global Community Centers</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MindHarmony. All rights reserved. | Culturally-Appropriate Mental Health Platform</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Animate bars on scroll
+        function animateBarsOnScroll() {
+            const chartBars = document.querySelectorAll('.bar-fill');
+            const whyLastSection = document.querySelector('.why-last');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        chartBars.forEach(bar => {
+                            bar.style.animationPlayState = 'running';
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(whyLastSection);
+        }
+        
+        // Initialize bar animation
+        document.addEventListener('DOMContentLoaded', animateBarsOnScroll);
+    </script>
+</body>
+</html>
