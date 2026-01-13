@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | MindHarmony</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            color: #4a6fa5;
+            font-size: 28px;
+        }
+        
+        .logo h1 {
+            color: #2d4059;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #4a6fa5;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2d4059;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #4a6fa5;
+            background-color: #f0f5ff;
+        }
+        
+        .active {
+            color: #4a6fa5;
+            background-color: #f0f5ff;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4a6fa5;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #4a6fa5;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #4a6fa5;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #2d4059;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #4a6fa5 0%, #2d4059 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Services Intro */
+        .services-intro {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2d4059;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        .intro-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .intro-visual img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .intro-text p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 18px;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            padding: 80px 0;
+            background-color: #f0f5ff;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: #4a6fa5;
+            color: white;
+            font-size: 40px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            color: #2d4059;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            color: #4a6fa5;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* Cultural Adaptation */
+        .cultural-adaptation {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .adaptation-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .adaptation-text {
+            flex: 1;
+        }
+        
+        .adaptation-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .adaptation-visual img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        
+        .adaptation-text p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .culture-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .culture-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4a6fa5;
+        }
+        
+        .culture-item h4 {
+            color: #2d4059;
+            margin-bottom: 10px;
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #4a6fa5 0%, #2d4059 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: #4a6fa5;
+        }
+        
+        .cta .btn:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2d4059;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #f0f5ff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4a6fa5;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #405b7d;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 992px) {
+            .intro-content, .adaptation-content {
+                flex-direction: column;
+            }
+            
+            .page-header h1 {
+                font-size: 38px;
+            }
+            
+            .culture-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>Mind<span>Harmony</span></h1>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="contact.html" class="btn">Get Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Culturally-Adapted Services</h1>
+            <p>Mental health support that respects your cultural background, values, and community context</p>
+        </div>
+    </section>
+
+    <section class="services-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <div class="section-title">
+                        <h2>Tailored to Your Cultural Context</h2>
+                        <p>One-size-fits-all approaches to mental health often fail. Our services are adapted to fit within your cultural framework.</p>
+                    </div>
+                    <p>We recognize that mental health expressions, coping mechanisms, and healing practices vary dramatically across cultures. Depression might manifest as physical pain in some cultures, while in others it's expressed as spiritual distress.</p>
+                    <p>Our services are co-designed with cultural advisors from diverse communities to ensure they're not just translated, but truly transformed to be culturally meaningful and effective.</p>
+                    <p>Whether you're seeking individual therapy, family counseling, or community healing circles, we offer approaches that respect your cultural values while incorporating evidence-based psychological principles.</p>
+                </div>
+                <div class="intro-visual">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Therapist and client in culturally-sensitive session">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-grid">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Services</h2>
+                <p>Each service is available in culturally-adapted versions for different communities</p>
+            </div>
+            
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Culturally-Adapted Therapy</h3>
+                        <p>One-on-one therapy that integrates your cultural values, spiritual beliefs, and community context into the healing process.</p>
+                        <ul class="service-features">
+                            <li>Therapists matched to your cultural background</li>
+                            <li>Integration of traditional healing practices</li>
+                            <li>Respect for family and community dynamics</li>
+                            <li>Available in 15+ languages</li>
+                            <li>In-person and virtual options</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Family & Community Counseling</h3>
+                        <p>Addressing mental health within family systems and community networks, respecting cultural hierarchies and communication styles.</p>
+                        <ul class="service-features">
+                            <li>Family therapy honoring cultural roles</li>
+                            <li>Intergenerational trauma healing</li>
+                            <li>Community healing circles</li>
+                            <li>Conflict resolution respecting cultural norms</li>
+                            <li>Collaboration with community elders</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Cultural Mental Health Training</h3>
+                        <p>Training for community leaders, healthcare providers, and educators on culturally-appropriate mental health approaches.</p>
+                        <ul class="service-features">
+                            <li>Cultural competency certification</li>
+                            <li>Community mental health first aid</li>
+                            <li>School-based cultural interventions</li>
+                            <li>Workplace mental health programs</li>
+                            <li>Traditional healer collaboration training</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cultural-adaptation">
+        <div class="container">
+            <div class="section-title">
+                <h2>How We Adapt Services</h2>
+                <p>Examples of how standard mental health approaches are transformed for cultural appropriateness</p>
+            </div>
+            
+            <div class="adaptation-content">
+                <div class="adaptation-text">
+                    <p>Cultural adaptation goes far beyond translation. We fundamentally rethink how mental health services are delivered to align with cultural values and community structures.</p>
+                    
+                    <div class="culture-list">
+                        <div class="culture-item">
+                            <h4>For Collectivist Cultures</h4>
+                            <p>Shift from individual-focused therapy to family and community involvement, honoring interdependence over independence.</p>
+                        </div>
+                        
+                        <div class="culture-item">
+                            <h4>For Spiritual Communities</h4>
+                            <p>Integrate prayer, meditation, or ritual into therapeutic practices, respecting spiritual explanations of distress.</p>
+                        </div>
+                        
+                        <div class="culture-item">
+                            <h4>For Oral Tradition Cultures</h4>
+                            <p>Use storytelling, proverbs, and oral history instead of written exercises or cognitive worksheets.</p>
+                        </div>
+                        
+                        <div class="culture-item">
+                            <h4>For Hierarchical Societies</h4>
+                            <p>Engage family elders or community leaders in the therapeutic process, respecting established authority structures.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="adaptation-visual">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Cultural adaptation illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Find Services for Your Community</h2>
+            <p>Our culturally-adapted services are available for individuals, families, and communities across diverse cultural backgrounds.</p>
+            <a href="contact.html" class="btn">Connect With a Cultural Specialist</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindHarmony</h3>
+                    <p>Culturally-appropriate mental health platform addressing the invisible foundation of community well-being.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Our Approach</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Cultural Resources</a></li>
+                        <li><a href="community.html">Community Forum</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> support@mindharmony.org</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (800) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MindHarmony. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    </script>
+</body>
+</html>
