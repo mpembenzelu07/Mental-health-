@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | MindHarmony</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            color: #4a6fa5;
+            font-size: 28px;
+        }
+        
+        .logo h1 {
+            color: #2d4059;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #4a6fa5;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2d4059;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #4a6fa5;
+            background-color: #f0f5ff;
+        }
+        
+        .active {
+            color: #4a6fa5;
+            background-color: #f0f5ff;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4a6fa5;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #4a6fa5;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #4a6fa5;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #2d4059;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #4a6fa5 0%, #2d4059 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Resources Intro */
+        .resources-intro {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2d4059;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        .intro-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .intro-visual img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .intro-text p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 18px;
+        }
+        
+        /* Cultural Resources */
+        .cultural-resources {
+            padding: 80px 0;
+            background-color: #f0f5ff;
+        }
+        
+        .resources-tabs {
+            margin-bottom: 40px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .tab-btn {
+            background-color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d4059;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .tab-btn:hover {
+            background-color: #4a6fa5;
+            color: white;
+        }
+        
+        .tab-btn.active {
+            background-color: #4a6fa5;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-header {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .resource-icon {
+            font-size: 24px;
+        }
+        
+        .resource-header h3 {
+            font-size: 20px;
+        }
+        
+        .resource-body {
+            padding: 25px;
+        }
+        
+        .resource-body p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            color: #4a6fa5;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            border-bottom: 2px solid #4a6fa5;
+        }
+        
+        /* Traditional Practices */
+        .traditional-practices {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .practice-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .practice-icon {
+            font-size: 50px;
+            color: #4a6fa5;
+            margin-bottom: 20px;
+        }
+        
+        .practice-card h3 {
+            color: #2d4059;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2d4059;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #f0f5ff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4a6fa5;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #405b7d;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 992px) {
+            .intro-content {
+                flex-direction: column;
+            }
+            
+            .page-header h1 {
+                font-size: 38px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .tab-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>Mind<span>Harmony</span></h1>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="contact.html" class="btn">Get Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Culturally-Specific Resources</h1>
+            <p>Mental health materials adapted for different cultural contexts, languages, and belief systems</p>
+        </div>
+    </section>
+
+    <section class="resources-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <div class="section-title">
+                        <h2>Resources That Respect Your Culture</h2>
+                        <p>Mental health information that makes sense within your cultural framework and values</p>
+                    </div>
+                    <p>Standard mental health resources often assume Western individualistic values, nuclear family structures, and specific communication styles. These can feel alienating or irrelevant to people from different cultural backgrounds.</p>
+                    <p>Our culturally-adapted resources are co-created with community members to ensure they resonate with local values, use familiar metaphors, and address culturally-specific stressors.</p>
+                    <p>From mental health guides that incorporate traditional proverbs to self-help materials that respect spiritual beliefs, we provide resources that bridge cultural wisdom with psychological science.</p>
+                </div>
+                <div class="intro-visual">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1036&q=80" alt="Multicultural resources and materials">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cultural-resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>Resources By Cultural Context</h2>
+                <p>Select your cultural community to find appropriate mental health resources</p>
+            </div>
+            
+            <div class="resources-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="latinx">Latinx Communities</button>
+                    <button class="tab-btn" data-tab="african">African & African Diaspora</button>
+                    <button class="tab-btn" data-tab="asian">Asian & Pacific Islander</button>
+                    <button class="tab-btn" data-tab="indigenous">Indigenous Communities</button>
+                    <button class="tab-btn" data-tab="middle-eastern">Middle Eastern</button>
+                </div>
+                
+                <div class="tab-content active" id="latinx">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <div class="resource-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <h3>Family-Centered Mental Health</h3>
+                            </div>
+                            <div class="resource-body">
+                                <p>A guide to mental health that respects familismo values, intergenerational relationships, and collective wellbeing in Latinx families.</p>
+                                <a href="#" class="resource-link">Download Guide (ES/EN) →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <div class="resource-icon">
+                                    <i class="fas fa-headphones"></i>
+                                </div>
+                                <h3>Narratives of Resilience Podcast</h3>
+                            </div>
+                            <div class="resource-body">
+                                <p>Stories of mental health journeys from Latinx individuals, addressing topics like acculturation stress, machismo, and spiritual coping.</p>
+                                <a href="#" class="resource-link">Listen to Episodes →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <div class="resource-icon">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <h3>Community Promotoras Training</h3>
+                            </div>
+                            <div class="resource-body">
+                                <p>Training materials for community health workers (promotoras) to provide culturally-grounded mental health support in Spanish-speaking communities.</p>
+                                <a href="#" class="resource-link">Access Training →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="african">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <div class="resource-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <h3>Healing Racial Trauma</h3>
+                            </div>
+                            <div class="resource-body">
+                                <p>Resources addressing the mental health impacts of racism, microaggressions, and historical trauma in Black communities.</p>
+                                <a href="#" class="resource-link">Access Resources →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-header">
+                                <div class="resource-icon">
+                                    <i class="fas fa-church"></i>
+                                </div>
+                                <h3>Faith-Based Mental Health</h3>
+                            </div>
+                            <div class="resource-body">
+                                <p>Integrating spiritual practices, church community support, and Biblical wisdom with evidence-based mental health approaches.</p>
+                                <a href="#" class="resource-link">Explore Materials →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="traditional-practices">
+        <div class="container">
+            <div class="section-title">
+                <h2>Traditional Healing Practices</h2>
+                <p>Cultural wisdom and healing traditions from around the world</p>
+            </div>
+            
+            <div class="practices-grid">
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Curanderismo</h3>
+                    <p>Latin American traditional healing system integrating herbal medicine, spiritual cleansing, and energy work.</p>
+                </div>
+                
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <i class="fas fa-yin-yang"></i>
+                    </div>
+                    <h3>Traditional Chinese Medicine</h3>
+                    <p>Holistic approach balancing Qi energy through acupuncture, herbal remedies, and mind-body practices.</p>
+                </div>
+                
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Indigenous Ceremonial Healing</h3>
+                    <p>Community-based healing through ceremony, storytelling, and connection to land and ancestors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MindHarmony</h3>
+                    <p>Culturally-appropriate mental health platform addressing the invisible foundation of community well-being.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Our Approach</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Cultural Resources</a></li>
+                        <li><a href="community.html">Community Forum</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> support@mindharmony.org</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (800) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MindHarmony. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
